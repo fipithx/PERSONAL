@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ t('taxation_calculate_your_tax', default='Calculate Your Tax') }}</h1>
+<p>{{ t('taxation_enter_amount_prompt', default='Enter your') }} {% if role == 'personal' %}{{ t('taxation_monthly_salary', default='monthly salary') }}{% elif role == 'trader' %}{{ t('taxation_monthly_turnover', default='monthly turnover') }}{% else %}{{ t('taxation_relevant_amount', default='relevant amount') }}{% endif %} {{ t('taxation_to_calculate', default='to calculate your tax obligation.') }}</p>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        {{ form.amount.label }}
+        {{ form.amount(class="form-control") }}
+    </div>
+    {{ form.submit(class="btn btn-primary") }}
+</form>
+{% endblock %}

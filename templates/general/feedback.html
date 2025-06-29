@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}{{ t('general_provide_feedback', default='Provide Feedback') }}{% endblock %}
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-center mb-4">{{ t('general_provide_feedback', default='Provide Feedback') }}</h1>
+    <div class="card">
+        <div class="card-body">
+            <form class="validate-form" method="POST" action="{{ url_for('feedback') }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <div class="form-group mb-3">
+                    <label for="tool_name" class="form-label">{{ t('general_select_tool', default='Select Tool') }}</label>
+                    <select name="tool_name" id="tool_name" class="form-select" required>
+                        <option value="">{{ t('general_choose_option', default='Choose...') }}</option>
+                        {% for tool in tool_options %}
+                            <option value="{{ tool[0] }}">{{ tool[1] }}</option>
+                        {% endfor %}
+                    </select>
+                    <div class="invalid-feedback">{{ t('general_invalid_tool', default='Please select a valid tool') }}</div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="rating" class="form-label">{{ t('general_rating', default='Rating (1-5)') }}</label>
+                    <input type="number" name="rating" id="rating" class="form-control" min="1" max="5" required>
+                    <boltArtifact id="complete-translation-integration" title="Complete Translation System Integration - All Templates">
