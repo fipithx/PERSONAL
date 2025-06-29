@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Calculate Your Tax</h1>
+<p>Enter your {% if role == 'personal' %}monthly salary{% elif role == 'trader' %}monthly turnover{% else %}relevant amount{% endif %} to calculate your tax obligation.</p>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        {{ form.amount.label }}
+        {{ form.amount(class="form-control") }}
+    </div>
+    {{ form.submit(class="btn btn-primary") }}
+</form>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Tax Calculation Result</h1>
+<p>For an amount of {{ amount }}, your tax obligation is {{ tax }}.</p>
+<p>Explanation: {{ explanation }}</p>
+<a href="{{ url_for('taxation_bp.calculate_tax') }}" class="btn btn-secondary">Back to Calculator</a>
+{% endblock %}
